@@ -215,7 +215,7 @@
 									</div>
 								{/each}
 							{:else}
-								<div class="flex gap-2">
+								<div class="sm flex gap-2 text-sm">
 									<dt class="font-semibold text-gray-900">
 										{propertyTitle}:
 									</dt>
