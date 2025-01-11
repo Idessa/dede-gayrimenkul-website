@@ -215,12 +215,14 @@
 									</div>
 								{/each}
 							{:else}
-								<dt class="mt-1 text-lg font-semibold text-gray-900">
-									{propertyTitle}:
-								</dt>
-								<dd>
-									{propertyTexts[0].property}
-								</dd>
+								<div class="mt-1 flex">
+									<dt class="font-semibold text-gray-900">
+										{propertyTitle}:
+									</dt>
+									<dd>
+										{propertyTexts[0].property}
+									</dd>
+								</div>
 							{/if}
 						{/each}
 					</div>
