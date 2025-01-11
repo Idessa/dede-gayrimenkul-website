@@ -194,25 +194,34 @@
 					<div class="mt-8 flex flex-col gap-2">
 						<h2 class="mb-1 text-2xl font-semibold text-gray-900">Özellikler</h2>
 						{#each Object.entries(Object.groupBy(data.property.properties, (data) => data.property_type)) as [propertyTitle, propertyTexts]}
-							<h3 class="mt-1 text-lg font-semibold text-gray-900">{propertyTitle}</h3>
-							{#each propertyTexts as propertyText}
-								<div class="flex items-center gap-2">
-									<svg
-										class="h-5 w-5 text-amber-800"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-										/>
-									</svg>
-									<span>{propertyText.property}</span>
-								</div>
-							{/each}
+							{#if propertyTexts?.length > 1}
+								<h3 class="mt-1 text-lg font-semibold text-gray-900">{propertyTitle}</h3>
+								{#each propertyTexts as propertyText}
+									<div class="flex items-center gap-2">
+										<svg
+											class="h-5 w-5 text-amber-800"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+											/>
+										</svg>
+										<span>{propertyText.property}</span>
+									</div>
+								{/each}
+							{:else}
+								<dt class="mt-1 text-lg font-semibold text-gray-900">
+									{propertyTitle}:
+								</dt>
+								<dd>
+									{propertyTexts[0].property}
+								</dd>
+							{/if}
 						{/each}
 					</div>
 				{/if}
