@@ -15,9 +15,9 @@
 
 	const SITE_DESCRIPTION =
 		'Dede Gayrimenkul, 32 yılı aşkın süredir gayrimenkul sektöründe güvenilir ve kaliteli hizmet sunuyor.';
-	const SITE_URL = 'https://dedegayrimenkul.demo.idesamedya.com/';
+	const SITE_URL = 'https://dedegayrimenkul.com/';
 	const SITE_TITLE = 'Dede Gayrimenkul ve Yatırım Danışmanlığı';
-	const SITE_IMAGE = 'https://dedegayrimenkul.demo.idesamedya.com/favicon.png';
+	const SITE_IMAGE = 'https://dedegayrimenkul.com/Favicon.ico';
 </script>
 
 <svelte:head>
