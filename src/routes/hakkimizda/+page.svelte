@@ -14,12 +14,14 @@
 		<div class="grid gap-12 md:grid-cols-2">
 			<!-- Sol Taraf - Hikayemiz -->
 			<div class="space-y-6">
-				<h2 class="text-3xl font-bold text-amber-800">Hikayemiz</h2>
+				<h2 class="text-3xl font-bold text-amber-800">32 Yıllık Tecrübeyle Güvenilir Hizmet</h2>
 				<p class="text-gray-600">
-					20 yılı aşkın süredir gayrimenkul sektöründe faaliyet gösteren Dede Gayrimenkul,
+					32 yıldır gayrimenkul sektöründe faaliyet gösteren Dede Gayrimenkul Yatırımları,
 					müşterilerine güvenilir ve profesyonel hizmet sunma misyonuyla yola çıkmıştır.
 					Kurulduğumuz günden bu yana, binlerce ailenin hayallerindeki eve kavuşmasına yardımcı
-					olduk.
+					olduk. Deneyimli ekibimiz ve müşteri odaklı yaklaşımımızla, gayrimenkul sektöründe
+					güvenilir bir marka olarak hizmet vermeye devam ediyoruz. Her müşterimizin ihtiyaçlarını
+					özenle dinliyor ve en uygun çözümleri sunuyoruz.
 				</p>
 				<p class="text-gray-600">
 					Deneyimli ekibimiz ve müşteri odaklı yaklaşımımızla, gayrimenkul sektöründe güvenilir bir
@@ -142,36 +144,4 @@
 	</section>
 
 	<!-- Ekibimiz -->
-	<section class="mx-auto max-w-6xl px-4 py-16">
-		<h2 class="mb-12 text-center text-3xl font-bold text-amber-800">Ekibimiz</h2>
-		<div class="grid gap-8 md:grid-cols-3">
-			<div class="text-center">
-				<img
-					src="/team1.jpg"
-					alt="Ahmet Dede"
-					class="mx-auto mb-4 h-48 w-48 rounded-full object-cover"
-				/>
-				<h3 class="text-xl font-semibold">Ahmet Dede</h3>
-				<p class="text-gray-600">Kurucu & Genel Müdür</p>
-			</div>
-			<div class="text-center">
-				<img
-					src="/team2.jpg"
-					alt="Mehmet Dede"
-					class="mx-auto mb-4 h-48 w-48 rounded-full object-cover"
-				/>
-				<h3 class="text-xl font-semibold">Mehmet Dede</h3>
-				<p class="text-gray-600">Satış Müdürü</p>
-			</div>
-			<div class="text-center">
-				<img
-					src="/team3.jpg"
-					alt="Ayşe Dede"
-					class="mx-auto mb-4 h-48 w-48 rounded-full object-cover"
-				/>
-				<h3 class="text-xl font-semibold">Ayşe Dede</h3>
-				<p class="text-gray-600">Pazarlama Müdürü</p>
-			</div>
-		</div>
-	</section>
 </main>
