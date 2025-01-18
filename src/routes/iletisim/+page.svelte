@@ -135,8 +135,8 @@
 						<div>
 							<h3 class="text-xl font-semibold text-gray-900">Adres</h3>
 							<p class="mt-2 text-gray-600">
-								Örnek Mahallesi, Örnek Sokak No:123<br />
-								Kadıköy/İstanbul
+								Fulya mahallesi Büyükdere caddesi no:7 kapı no:62 <br />
+								şisli/İstanbul/Türkiye
 							</p>
 						</div>
 					</div>
