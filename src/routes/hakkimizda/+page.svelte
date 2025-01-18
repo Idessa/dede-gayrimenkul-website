@@ -124,7 +124,7 @@
 		<div class="mx-auto max-w-6xl px-4">
 			<div class="grid grid-cols-2 gap-8 md:grid-cols-4">
 				<div class="text-center">
-					<div class="text-4xl font-bold">20+</div>
+					<div class="text-4xl font-bold">32+</div>
 					<div class="mt-2">Yıllık Deneyim</div>
 				</div>
 				<div class="text-center">
