@@ -14,7 +14,7 @@
 	});
 
 	const SITE_DESCRIPTION =
-		'Dede Gayrimenkul, 20 yılı aşkın süredir gayrimenkul sektöründe güvenilir ve ucuz hizmet sunuyor.';
+		'Dede Gayrimenkul, 32 yılı aşkın süredir gayrimenkul sektöründe güvenilir ve kaliteli hizmet sunuyor.';
 	const SITE_URL = 'https://dedegayrimenkul.demo.idesamedya.com/';
 	const SITE_TITLE = 'Dede Gayrimenkul ve Yatırım Danışmanlığı';
 	const SITE_IMAGE = 'https://dedegayrimenkul.demo.idesamedya.com/favicon.png';
