@@ -78,7 +78,7 @@
 						</div>
 						<div>
 							<h3 class="mb-2 text-xl font-semibold text-gray-900">Telefon</h3>
-							<a class="text-gray-600" href="tel:+905402163426">+90 (540) 216 34 26</a>
+							<a class="text-gray-600" href="tel:+902244532228">+90 224 453 22 28</a>
 						</div>
 					</div>
 
