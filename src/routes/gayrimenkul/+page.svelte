@@ -54,24 +54,28 @@
 	<title>Gayrimenkuller | Dede Gayrimenkul</title>
 </svelte:head>
 
-<main class="bg-gray-50 py-12" in:fade>
+<main class="bg-gray-50 py-12 dark:bg-gray-900" in:fade>
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<!-- Başlık -->
 		<div class="text-center">
-			<h1 class="text-3xl font-bold text-gray-900 sm:text-4xl">Gayrimenkuller</h1>
-			<p class="mt-3 text-lg text-gray-600">Hayalinizdeki eve bir adım daha yaklaşın</p>
+			<h1 class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">Gayrimenkuller</h1>
+			<p class="mt-3 text-lg text-gray-600 dark:text-gray-300">
+				Hayalinizdeki eve bir adım daha yaklaşın
+			</p>
 		</div>
 
 		<!-- Filtreler -->
-		<div class="mt-8 rounded-lg bg-white p-6 shadow-md">
+		<div class="mt-8 rounded-lg bg-white p-6 shadow-md dark:bg-gray-800 dark:shadow-gray-900/10">
 			<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 				<!-- Tip Filtresi -->
 				<div>
-					<label for="type" class="block text-sm font-medium text-gray-700">Durum</label>
+					<label for="type" class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+						>Durum</label
+					>
 					<select
 						id="type"
 						bind:value={selectedType}
-						class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+						class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm focus:border-amber-500 focus:ring-amber-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-amber-400 dark:focus:ring-amber-400"
 					>
 						<option value="all">Tümü</option>
 						<option value="Satılık">Satılık</option>
@@ -81,24 +85,28 @@
 
 				<!-- Fiyat Aralığı -->
 				<div>
-					<label for="minPrice" class="block text-sm font-medium text-gray-700">Min. Fiyat</label>
+					<label for="minPrice" class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+						>Min. Fiyat</label
+					>
 					<input
 						type="number"
 						id="minPrice"
 						bind:value={minPrice}
 						placeholder="Min TL"
-						class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+						class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm focus:border-amber-500 focus:ring-amber-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-amber-400 dark:focus:ring-amber-400"
 					/>
 				</div>
 
 				<div>
-					<label for="maxPrice" class="block text-sm font-medium text-gray-700">Max. Fiyat</label>
+					<label for="maxPrice" class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+						>Max. Fiyat</label
+					>
 					<input
 						type="number"
 						id="maxPrice"
 						bind:value={maxPrice}
 						placeholder="Max TL"
-						class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+						class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm focus:border-amber-500 focus:ring-amber-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-amber-400 dark:focus:ring-amber-400"
 					/>
 				</div>
 			</div>
@@ -109,7 +117,7 @@
 					type="text"
 					bind:value={searchQuery}
 					placeholder="Konum veya başlık ile arayın..."
-					class="block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+					class="block w-full rounded-md border-gray-300 bg-white shadow-sm focus:border-amber-500 focus:ring-amber-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-amber-400 dark:focus:ring-amber-400"
 				/>
 			</div>
 		</div>
@@ -126,7 +134,9 @@
 				</div>
 			{:else}
 				<div class="text-center">
-					<p class="text-lg text-gray-600">Seçilen kriterlere uygun gayrimenkul bulunamadı.</p>
+					<p class="text-lg text-gray-600 dark:text-gray-400">
+						Seçilen kriterlere uygun gayrimenkul bulunamadı.
+					</p>
 				</div>
 			{/if}
 		</div>

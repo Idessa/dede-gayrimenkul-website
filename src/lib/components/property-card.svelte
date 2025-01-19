@@ -60,7 +60,7 @@
 </script>
 
 <div
-	class="group row-span-3 grid h-full gap-0 overflow-hidden rounded-lg bg-amber-50 shadow-lg transition-transform md:hover:-translate-y-1"
+	class="group row-span-3 grid h-full gap-0 overflow-hidden rounded-lg bg-amber-50 shadow-lg transition-transform dark:bg-gray-800 md:hover:-translate-y-1"
 	role="article"
 >
 	<!-- Carousel -->
@@ -93,40 +93,26 @@
 				class="absolute inset-0 flex items-center justify-between md:opacity-0 md:transition-opacity md:group-hover:opacity-100"
 			>
 				<button
-					class="ml-2 rounded-full bg-black/50 p-1.5 text-white transition-all hover:scale-110 hover:bg-black/70 disabled:opacity-50"
+					class="ml-2 size-10 rounded-full bg-black/50 p-1.5 text-white transition-all hover:scale-110 hover:bg-black/70 disabled:opacity-50 dark:bg-black/70 dark:hover:bg-black/90"
 					onclick={prevImage}
 					disabled={isAnimating}
 				>
 					<span class="sr-only">Önceki görsel</span>
-					<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M15 19l-7-7 7-7"
-						/>
-					</svg>
+					<iconify-icon icon="mdi:chevron-left" class="text-2xl text-white"></iconify-icon>
 				</button>
 				<button
-					class="mr-2 rounded-full bg-black/50 p-1.5 text-white transition-all hover:scale-110 hover:bg-black/70 disabled:opacity-50"
+					class="mr-2 size-10 rounded-full bg-black/50 p-1.5 text-white transition-all hover:scale-110 hover:bg-black/70 disabled:opacity-50 dark:bg-black/70 dark:hover:bg-black/90"
 					onclick={nextImage}
 					disabled={isAnimating}
 				>
 					<span class="sr-only">Sonraki görsel</span>
-					<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M9 5l7 7-7 7"
-						/>
-					</svg>
+					<iconify-icon icon="mdi:chevron-right" class="text-2xl text-white"></iconify-icon>
 				</button>
 			</div>
 
 			<!-- Görsel Sayacı -->
 			<div
-				class="absolute bottom-2 right-2 rounded-full bg-black/50 px-2 py-0.5 text-xs text-white md:opacity-0 md:transition-opacity md:group-hover:opacity-100"
+				class="absolute bottom-2 right-2 rounded-full bg-black/50 px-2 py-0.5 text-xs text-white dark:bg-black/70 md:opacity-0 md:transition-opacity md:group-hover:opacity-100"
 			>
 				{currentImageIndex + 1} / {images.length}
 			</div>
@@ -139,20 +125,27 @@
 			<span
 				class="inline-block rounded-full px-2 py-1 text-xs font-semibold {property.status ===
 				'Satılık'
-					? 'bg-green-100 text-green-800'
-					: 'bg-blue-100 text-blue-800'}"
+					? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
+					: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'}"
 			>
 				{property.status}
 			</span>
 		</div>
-		<h3 class="text-xl font-semibold text-amber-900">{property.title}</h3>
-		<h3 class="text-base text-amber-700">
+		<h3 class="text-xl font-semibold text-amber-900 dark:text-amber-100">{property.title}</h3>
+		<h3 class="text-base text-amber-700 dark:text-amber-300">
 			{property.city}, {property.district}, {property.neighborhood}
 		</h3>
 	</div>
 	<div class="flex flex-col justify-end p-4 pt-2">
-		<div class="mt-4 flex items-baseline justify-between text-amber-600" role="list">
-			<p class="mt-2 text-lg font-bold text-amber-800" role="listitem" aria-label="Fiyat">
+		<div
+			class="mt-4 flex items-baseline justify-between text-amber-600 dark:text-amber-400"
+			role="list"
+		>
+			<p
+				class="mt-2 text-lg font-bold text-amber-800 dark:text-amber-200"
+				role="listitem"
+				aria-label="Fiyat"
+			>
 				{property.price.toLocaleString('tr-TR')} ₺
 			</p>
 			<span role="listitem" aria-label="Alan">
@@ -161,7 +154,7 @@
 		</div>
 		<a
 			href="/gayrimenkul/{property.slug}"
-			class="mt-4 block w-full rounded-md bg-amber-800 px-4 py-2 text-center text-white transition-colors hover:bg-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-600 focus:ring-offset-2"
+			class="mt-4 block w-full rounded-md bg-amber-800 px-4 py-2 text-center text-white transition-colors hover:bg-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-600 focus:ring-offset-2 dark:bg-amber-700 dark:hover:bg-amber-800 dark:focus:ring-amber-500 dark:focus:ring-offset-gray-800"
 			aria-label="{property.title} detaylarını incele"
 		>
 			Detayları İncele

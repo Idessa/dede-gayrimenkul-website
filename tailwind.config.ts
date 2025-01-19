@@ -8,8 +8,21 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
 	theme: {
-		extend: {}
+		extend: {
+			colors: {
+				primary: {
+					DEFAULT: '#1a1a1a',
+					dark: '#fbbf24' // Dark mode'da primary renk
+				},
+				gray: {
+					900: '#171717',
+					800: '#262626',
+					200: '#f3f4f6'
+				}
+			}
+		}
 	},
 
-	plugins: [typography, forms, containerQueries, aspectRatio]
+	plugins: [typography, forms, containerQueries, aspectRatio],
+	darkMode: 'class'
 } satisfies Config;

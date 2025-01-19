@@ -5,12 +5,37 @@
 	import { fade } from 'svelte/transition';
 	import Navbar from '$lib/components/navbar.svelte';
 	import Footer from '$lib/components/footer.svelte';
-	let { children } = $props();
+	import type { Snippet } from 'svelte';
+	import { browser } from '$app/environment';
+	import { mode, setMode } from 'mode-watcher';
+
+	type Props = {
+		children: Snippet;
+	};
+
+	let { children }: Props = $props();
 	let path = $state('');
+
+	// Başlangıçta sistem tercihine göre dark mode ayarla
+	if (browser) {
+		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		setMode(prefersDark ? 'dark' : 'light');
+	}
 
 	// URL'i key olarak kullan
 	$effect(() => {
 		path = $page.url.pathname;
+	});
+
+	// Mode değişikliklerini dinle
+	$effect(() => {
+		if (browser) {
+			if ($mode === 'dark') {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+		}
 	});
 
 	const SITE_DESCRIPTION =
@@ -44,12 +69,16 @@
 	<meta name="twitter:image" content={SITE_IMAGE} />
 </svelte:head>
 
-<Navbar />
+<div
+	class="min-h-screen bg-white text-gray-900 transition-colors duration-200 dark:bg-gray-900 dark:text-white"
+>
+	<Navbar />
 
-{#key path}
-	<main in:fade={{ duration: 300 }} class="flex-1">
-		{@render children()}
-	</main>
-{/key}
+	{#key path}
+		<main in:fade={{ duration: 300 }} class="flex-1">
+			{@render children()}
+		</main>
+	{/key}
 
-<Footer />
+	<Footer />
+</div>

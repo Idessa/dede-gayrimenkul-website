@@ -67,7 +67,10 @@
 	});
 </script>
 
-<section class="relative w-full overflow-hidden" aria-label="Gayrimenkul Kartları Slayt Gösterisi">
+<section
+	class="relative w-full overflow-hidden bg-amber-50 dark:bg-gray-800"
+	aria-label="Gayrimenkul Kartları Slayt Gösterisi"
+>
 	<div
 		role="button"
 		tabindex="0"
@@ -131,8 +134,8 @@
 		{#each properties as _, i}
 			<button
 				class="h-2 w-2 rounded-full transition-colors {currentIndex === i
-					? 'bg-amber-800'
-					: 'bg-amber-300'}"
+					? 'bg-amber-800 dark:bg-amber-400'
+					: 'bg-amber-300 dark:bg-amber-700'}"
 				onclick={() => {
 					currentIndex = i;
 					currentTranslate = -(i * 100);

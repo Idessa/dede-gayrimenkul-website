@@ -37,7 +37,7 @@
 	<title>İletişim | Dede Gayrimenkul</title>
 </svelte:head>
 
-<main class="" in:fade>
+<main class="bg-white dark:bg-gray-900" in:fade>
 	<!-- Hero Section -->
 	<HeroSection
 		title="İletişime Geçin"
@@ -50,8 +50,8 @@
 			<!-- Sol Taraf - İletişim Bilgileri -->
 			<div class="space-y-8">
 				<div>
-					<h2 class="text-3xl font-bold text-amber-800">Bize Ulaşın</h2>
-					<p class="mt-4 text-gray-600">
+					<h2 class="text-3xl font-bold text-amber-800 dark:text-amber-200">Bize Ulaşın</h2>
+					<p class="mt-4 text-gray-600 dark:text-gray-300">
 						Gayrimenkul danışmanlığı konusunda profesyonel hizmet almak için bizimle iletişime
 						geçebilirsiniz.
 					</p>
@@ -60,49 +60,33 @@
 				<div class="space-y-6">
 					<div class="flex items-start gap-4">
 						<div
-							class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-100"
+							class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-100 dark:bg-amber-900/20"
 						>
-							<svg
-								class="h-6 w-6 text-amber-800"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-								/>
-							</svg>
+							<iconify-icon icon="mdi:phone" class="text-2xl text-amber-800 dark:text-amber-200"
+							></iconify-icon>
 						</div>
 						<div>
-							<h3 class="mb-2 text-xl font-semibold text-gray-900">Telefon</h3>
-							<a class="text-gray-600" href="tel:+902244532228">+90 224 453 22 28</a>
+							<h3 class="mb-2 text-xl font-semibold text-gray-900 dark:text-white">Telefon</h3>
+							<a
+								class="text-gray-600 hover:text-amber-800 dark:text-gray-300 dark:hover:text-amber-200"
+								href="tel:+902244532228">+90 224 453 22 28</a
+							>
 						</div>
 					</div>
 
 					<div class="flex items-start gap-4">
 						<div
-							class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-100"
+							class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-100 dark:bg-amber-900/20"
 						>
-							<svg
-								class="h-6 w-6 text-amber-800"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-								/>
-							</svg>
+							<iconify-icon icon="mdi:email" class="text-2xl text-amber-800 dark:text-amber-200"
+							></iconify-icon>
 						</div>
 						<div>
-							<h3 class="mb-2 text-xl font-semibold text-gray-900">E-posta</h3>
-							<a class="text-gray-600" href="mailto:acilarazi.com@gmail.com">
+							<h3 class="mb-2 text-xl font-semibold text-gray-900 dark:text-white">E-posta</h3>
+							<a
+								class="text-gray-600 hover:text-amber-800 dark:text-gray-300 dark:hover:text-amber-200"
+								href="mailto:acilarazi.com@gmail.com"
+							>
 								acilarazi.com@gmail.com
 							</a>
 						</div>
@@ -110,31 +94,16 @@
 
 					<div class="flex items-start gap-4">
 						<div
-							class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-100"
+							class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-100 dark:bg-amber-900/20"
 						>
-							<svg
-								class="h-6 w-6 text-amber-800"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-								/>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-								/>
-							</svg>
+							<iconify-icon
+								icon="mdi:map-marker"
+								class="text-2xl text-amber-800 dark:text-amber-200"
+							></iconify-icon>
 						</div>
 						<div>
-							<h3 class="text-xl font-semibold text-gray-900">Adres</h3>
-							<p class="mt-2 text-gray-600">
+							<h3 class="text-xl font-semibold text-gray-900 dark:text-white">Adres</h3>
+							<p class="mt-2 text-gray-600 dark:text-gray-300">
 								Fulya mahallesi Büyükdere caddesi no:7 kapı no:62 <br />
 								şisli/İstanbul/Türkiye
 							</p>
@@ -143,25 +112,14 @@
 
 					<div class="flex items-start gap-4">
 						<div
-							class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-100"
+							class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-100 dark:bg-amber-900/20"
 						>
-							<svg
-								class="h-6 w-6 text-amber-800"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-								/>
-							</svg>
+							<iconify-icon icon="mdi:clock" class="text-2xl text-amber-800 dark:text-amber-200"
+							></iconify-icon>
 						</div>
 						<div>
-							<h3 class="text-xl font-semibold text-gray-900">Çalışma Saatleri</h3>
-							<p class="mt-2 text-gray-600">
+							<h3 class="text-xl font-semibold text-gray-900 dark:text-white">Çalışma Saatleri</h3>
+							<p class="mt-2 text-gray-600 dark:text-gray-300">
 								Pazartesi - Cumartesi: 09:00 - 18:00<br />
 								Pazar: Kapalı
 							</p>
@@ -171,15 +129,19 @@
 			</div>
 
 			<!-- Sağ Taraf - İletişim Formu -->
-			<div class="rounded-lg bg-white p-8 shadow-lg">
-				<h2 class="text-2xl font-bold text-amber-800">Mesaj Gönderin</h2>
-				<p class="mt-2 text-gray-600">Size en kısa sürede dönüş yapacağız.</p>
+			<div class="rounded-lg bg-white p-8 shadow-lg dark:bg-gray-800 dark:shadow-gray-900/10">
+				<h2 class="text-2xl font-bold text-amber-800 dark:text-amber-200">Mesaj Gönderin</h2>
+				<p class="mt-2 text-gray-600 dark:text-gray-300">Size en kısa sürede dönüş yapacağız.</p>
 				{#if form?.success}
-					<div class="mb-4 rounded-md bg-green-50 p-4 text-green-800">
+					<div
+						class="mb-4 rounded-md bg-green-50 p-4 text-green-800 dark:bg-green-900/30 dark:text-green-200"
+					>
 						{form.message}
 					</div>
 				{:else if form?.error}
-					<div class="mb-4 rounded-md bg-red-50 p-4 text-red-800">
+					<div
+						class="mb-4 rounded-md bg-red-50 p-4 text-red-800 dark:bg-red-900/30 dark:text-red-200"
+					>
 						{form.message}
 					</div>
 				{/if}
@@ -190,57 +152,65 @@
 					use:enhance={submitCreateMessage}
 				>
 					<div>
-						<label for="name" class="block text-sm font-medium text-gray-700">Ad Soyad</label>
+						<label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+							>Ad Soyad</label
+						>
 						<input
 							type="text"
 							id="name"
 							name="name"
 							bind:value={formData.name}
 							required
-							class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+							class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-amber-400 dark:focus:ring-amber-400"
 						/>
 					</div>
 
 					<div>
-						<label for="email" class="block text-sm font-medium text-gray-700">E-posta</label>
+						<label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+							>E-posta</label
+						>
 						<input
 							type="email"
 							id="email"
 							name="email"
 							bind:value={formData.email}
 							required
-							class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+							class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-amber-400 dark:focus:ring-amber-400"
 						/>
 					</div>
 
 					<div>
-						<label for="phone" class="block text-sm font-medium text-gray-700">Telefon</label>
+						<label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+							>Telefon</label
+						>
 						<input
 							type="tel"
 							id="phone"
 							name="phone"
 							bind:value={formData.phone}
 							required
-							class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+							class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-amber-400 dark:focus:ring-amber-400"
 						/>
 					</div>
 
 					<div>
-						<label for="message" class="block text-sm font-medium text-gray-700">Mesajınız</label>
+						<label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+							>Mesajınız</label
+						>
 						<textarea
 							id="message"
 							name="message"
 							bind:value={formData.message}
 							rows="4"
 							required
-							class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+							class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-amber-400 dark:focus:ring-amber-400"
 						></textarea>
 					</div>
 
 					<button
 						type="submit"
 						disabled={formState.creating}
-						class="relative w-full rounded-md bg-amber-800 py-2 text-white transition-all hover:bg-amber-700 disabled:opacity-50"
+						class="relative w-full rounded-md bg-amber-800 py-2 text-white transition-all hover:bg-amber-700 disabled:opacity-50 dark:bg-amber-700 dark:hover:bg-amber-600"
 					>
 						{#if formState.creating}
 							<div class="flex items-center justify-center gap-2">

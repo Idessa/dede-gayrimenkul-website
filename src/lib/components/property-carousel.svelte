@@ -62,7 +62,7 @@
 </script>
 
 <div
-	class="relative h-[600px] w-full overflow-hidden"
+	class="relative h-[600px] w-full overflow-hidden bg-amber-50 dark:bg-gray-800"
 	role="region"
 	aria-label="Gayrimenkul Slayt Gösterisi"
 	ontouchstart={handleTouchStart}
@@ -86,12 +86,12 @@
 				/>
 
 				<a
-					class="absolute bottom-0 left-0 right-0 bg-black/50 p-6 text-white"
+					class="absolute bottom-0 left-0 right-0 bg-black/50 p-6 text-white backdrop-blur-sm transition-colors hover:bg-black/60 dark:bg-black/70 dark:hover:bg-black/80"
 					href="/gayrimenkul/{property.slug}"
 				>
-					<h2 class="text-2xl font-bold">{property.title}</h2>
-					<p class="text-xl">{property.price.toLocaleString('tr-TR')} ₺</p>
-					<div class="mt-2 flex gap-4">
+					<h2 class="text-2xl font-bold text-white">{property.title}</h2>
+					<p class="text-xl text-white/90">{property.price.toLocaleString('tr-TR')} ₺</p>
+					<div class="mt-2 flex gap-4 text-white/80">
 						{property.city}, {property.district}, {property.neighborhood}
 					</div>
 				</a>
@@ -99,7 +99,6 @@
 		{/each}
 	</div>
 
-	<!-- Kontrol butonları için keyboard navigation -->
 	<div class="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-2 md:bottom-24">
 		{#each properties as _, i}
 			<button
@@ -115,36 +114,21 @@
 		{/each}
 	</div>
 
-	<!-- Masaüstü butonlar -->
 	<button
 		onclick={prevSlide}
-		class="absolute left-4 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/80 p-2 hover:bg-white md:block"
+		class="absolute left-4 top-1/2 hidden size-10 -translate-y-1/2 rounded-full bg-white/80 p-2 text-gray-900 shadow-lg transition-all hover:bg-white hover:shadow-xl dark:bg-gray-800/80 dark:text-white dark:hover:bg-gray-800 md:block"
 		aria-label="Önceki gayrimenkul"
 	>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			class="h-6 w-6"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke="currentColor"
-		>
-			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-		</svg>
+		<iconify-icon icon="mdi:chevron-left" class="text-2xl text-gray-900 dark:text-white"
+		></iconify-icon>
 	</button>
 
 	<button
 		onclick={nextSlide}
-		class="absolute right-4 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/80 p-2 hover:bg-white md:block"
+		class="absolute right-4 top-1/2 hidden size-10 -translate-y-1/2 rounded-full bg-white/80 p-2 text-gray-900 shadow-lg transition-all hover:bg-white hover:shadow-xl dark:bg-gray-800/80 dark:text-white dark:hover:bg-gray-800 md:block"
 		aria-label="Sonraki gayrimenkul"
 	>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			class="h-6 w-6"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke="currentColor"
-		>
-			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-		</svg>
+		<iconify-icon icon="mdi:chevron-right" class="text-2xl text-gray-900 dark:text-white"
+		></iconify-icon>
 	</button>
 </div>

@@ -70,8 +70,8 @@
 
 	const images = [
 		data.property.main_image,
-		...data.property.images.map((val) => val.directus_files_id)
-	].map((val) => `https://energydnd.idesamedya.com/assets/${val}`);
+		...data.property.images.map((val: any) => val.directus_files_id)
+	].map((val: any) => `https://energydnd.idesamedya.com/assets/${val}`);
 
 	// Küçük görseller için ekstra değişkenler
 	let currentThumbScroll = $state(0);
@@ -115,7 +115,7 @@
 
 	// Özellikleri grupla
 	const groupedProperties = data.property.properties
-		? groupBy(data.property.properties, (item) => item.property_type)
+		? groupBy(data.property.properties, (item: any) => item.property_type)
 		: {};
 </script>
 
@@ -123,13 +123,13 @@
 	<title>{data.property.title} | Dede Gayrimenkul</title>
 </svelte:head>
 
-<main class="bg-gray-50" in:fade>
+<main class="bg-gray-50 dark:bg-gray-900" in:fade>
 	<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
 		<!-- Görsel Galerisi -->
 		<div class="space-y-4">
 			<!-- Ana Görsel -->
 			<div
-				class="relative h-[300px] overflow-hidden rounded-lg bg-gray-200 sm:h-[350px] lg:h-[400px]"
+				class="relative h-[300px] overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-800 sm:h-[350px] lg:h-[400px]"
 				ontouchstart={handleTouchStart}
 				ontouchmove={handleTouchMove}
 				ontouchend={handleTouchEnd}
@@ -155,41 +155,27 @@
 				{#if images.length > 1}
 					<div class="absolute inset-0 flex items-center justify-between p-4">
 						<button
-							class="rounded-full bg-black/50 p-2 text-white transition-all hover:scale-110 hover:bg-black/70 disabled:opacity-50"
+							class="rounded-full bg-black/50 p-2 text-white transition-all hover:scale-110 hover:bg-black/70 disabled:opacity-50 dark:bg-black/70 dark:hover:bg-black/90"
 							onclick={prevImage}
 							disabled={isAnimating}
 						>
 							<span class="sr-only">Önceki görsel</span>
-							<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M15 19l-7-7 7-7"
-								/>
-							</svg>
+							<iconify-icon icon="mdi:chevron-left" class="text-2xl"></iconify-icon>
 						</button>
 						<button
-							class="rounded-full bg-black/50 p-2 text-white transition-all hover:scale-110 hover:bg-black/70 disabled:opacity-50"
+							class="rounded-full bg-black/50 p-2 text-white transition-all hover:scale-110 hover:bg-black/70 disabled:opacity-50 dark:bg-black/70 dark:hover:bg-black/90"
 							onclick={nextImage}
 							disabled={isAnimating}
 						>
 							<span class="sr-only">Sonraki görsel</span>
-							<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M9 5l7 7-7 7"
-								/>
-							</svg>
+							<iconify-icon icon="mdi:chevron-right" class="text-2xl"></iconify-icon>
 						</button>
 					</div>
 				{/if}
 
 				<!-- Görsel Sayacı -->
 				<div
-					class="absolute bottom-4 right-4 rounded-full bg-black/50 px-3 py-1 text-sm text-white"
+					class="absolute bottom-4 right-4 rounded-full bg-black/50 px-3 py-1 text-sm text-white dark:bg-black/70"
 				>
 					{currentImageIndex + 1} / {images?.length ?? 0}
 				</div>
@@ -200,7 +186,6 @@
 				<div class="relative mt-4">
 					<div
 						class="thumbs-container scrollbar-hide relative flex snap-x snap-mandatory overflow-x-auto"
-						style="scroll-behavior: smooth;"
 					>
 						<div class="flex">
 							{#each images as image, index}
@@ -209,7 +194,7 @@
 									disabled={isAnimating}
 									class="mr-2 flex-shrink-0 snap-center transition-all duration-300 {currentImageIndex ===
 									index
-										? 'scale-105 ring-2 ring-amber-500'
+										? 'scale-105 ring-2 ring-amber-500 dark:ring-amber-400'
 										: 'opacity-70 hover:opacity-100'} {isAnimating ? 'pointer-events-none' : ''}"
 									style="width: 100px;"
 								>
@@ -232,48 +217,43 @@
 		<div class="mt-8 grid gap-8 lg:grid-cols-3">
 			<!-- Sol Kolon - Ana Bilgiler -->
 			<div class="lg:col-span-2">
-				<h1 class="text-3xl font-bold text-gray-900">{data.property.title}</h1>
-				<p class="mt-2 text-xl text-amber-800">{formatPrice(data.property.price)}</p>
-				<p class="mt-1 text-gray-600">
+				<h1 class="text-3xl font-bold text-gray-900 dark:text-white">{data.property.title}</h1>
+				<p class="mt-2 text-xl text-amber-800 dark:text-amber-200">
+					{formatPrice(data.property.price)}
+				</p>
+				<p class="mt-1 text-gray-600 dark:text-gray-300">
 					{data.property.city}, {data.property.district}, {data.property.neighborhood}
 				</p>
 
 				<div class="mt-6">
-					<h2 class="text-xl font-semibold text-gray-900">Açıklama</h2>
-					<p class="mt-2 text-gray-600">{@html data.property.description}</p>
+					<h2 class="text-xl font-semibold text-gray-900 dark:text-white">Açıklama</h2>
+					<p class="mt-2 text-gray-600 dark:text-gray-300">{@html data.property.description}</p>
 				</div>
 
 				<!-- Özellikler -->
 				{#if data.property.properties && data.property.properties.length > 0}
 					<div class="mt-8 flex flex-col gap-2">
-						<h2 class="mb-1 text-2xl font-semibold text-gray-900">Özellikler</h2>
+						<h2 class="mb-1 text-2xl font-semibold text-gray-900 dark:text-white">Özellikler</h2>
 						{#each Object.entries(groupedProperties) as [propertyTitle, propertyTexts]}
 							{#if propertyTexts?.length > 1}
-								<h3 class="mt-1 text-lg font-semibold text-gray-900">{propertyTitle}</h3>
+								<h3 class="mt-1 text-lg font-semibold text-gray-900 dark:text-white">
+									{propertyTitle}
+								</h3>
 								{#each propertyTexts as propertyText}
 									<div class="flex items-center gap-2">
-										<svg
-											class="h-5 w-5 text-amber-800"
-											fill="none"
-											viewBox="0 0 24 24"
-											stroke="currentColor"
-										>
-											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												stroke-width="2"
-												d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-											/>
-										</svg>
-										<span>{propertyText.property}</span>
+										<iconify-icon
+											icon="mdi:information"
+											class="text-xl text-amber-800 dark:text-amber-200"
+										></iconify-icon>
+										<span class="text-gray-600 dark:text-gray-300">{propertyText.property}</span>
 									</div>
 								{/each}
 							{:else}
 								<div class="sm flex gap-2 text-sm">
-									<dt class="font-semibold text-gray-900">
+									<dt class="font-semibold text-gray-900 dark:text-white">
 										{propertyTitle}:
 									</dt>
-									<dd>
+									<dd class="text-gray-600 dark:text-gray-300">
 										{propertyTexts[0].property}
 									</dd>
 								</div>
@@ -285,11 +265,12 @@
 		</div>
 
 		<div class="mt-12 h-[calc(100vh-200px)]">
-			<h2 class="mb-2 text-xl font-semibold text-gray-900">
-				Konum <a
+			<h2 class="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+				Konum
+				<a
 					href="https://www.google.com/maps/@{data.property.location.coordinates[1]},{data.property
 						.location.coordinates[0]},19z"
-					class="text-base font-normal"
+					class="text-base font-normal text-amber-800 hover:text-amber-700 dark:text-amber-400 dark:hover:text-amber-300"
 					target="_blank"
 				>
 					(Google Haritalar'da aç)
