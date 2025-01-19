@@ -72,6 +72,51 @@
 		data.property.main_image,
 		...data.property.images.map((val) => val.directus_files_id)
 	].map((val) => `https://energydnd.idesamedya.com/assets/${val}`);
+
+	// Küçük görseller için ekstra değişkenler
+	let currentThumbScroll = $state(0);
+	const thumbsToShow = 5; // Bir seferde gösterilecek küçük resim sayısı
+
+	function updateThumbScroll(direction: number) {
+		const newScroll = currentThumbScroll + direction;
+		if (newScroll >= 0 && newScroll <= images.length - thumbsToShow) {
+			currentThumbScroll = newScroll;
+		}
+	}
+
+	// Küçük görseller için scroll hesaplama
+	$effect(() => {
+		if (images.length > 3) {
+			const container = document.querySelector('.thumbs-container');
+			if (container) {
+				const scrollAmount = currentImageIndex * 100 - container.clientWidth / 2 + 50;
+				container.scrollTo({
+					left: scrollAmount,
+					behavior: 'smooth'
+				});
+			}
+		}
+	});
+
+	// GroupBy yardımcı fonksiyonu
+	function groupBy<T>(array: T[], key: (item: T) => string): Record<string, T[]> {
+		return array.reduce(
+			(groups, item) => {
+				const groupKey = key(item);
+				if (!groups[groupKey]) {
+					groups[groupKey] = [];
+				}
+				groups[groupKey].push(item);
+				return groups;
+			},
+			{} as Record<string, T[]>
+		);
+	}
+
+	// Özellikleri grupla
+	const groupedProperties = data.property.properties
+		? groupBy(data.property.properties, (item) => item.property_type)
+		: {};
 </script>
 
 <svelte:head>
@@ -152,24 +197,33 @@
 
 			<!-- Küçük Görseller -->
 			{#if images.length > 1}
-				<div class="flex flex-wrap gap-2">
-					{#each images as image, index}
-						<button
-							onclick={() => goToImage(index)}
-							disabled={isAnimating}
-							class="relative h-[60px] overflow-hidden rounded-lg sm:h-[80px] {currentImageIndex ===
-							index
-								? 'ring-2 ring-amber-500'
-								: ''} {isAnimating ? 'pointer-events-none' : ''}"
-						>
-							<img
-								src="{image}?key=small-image"
-								alt="Görsel {index + 1}"
-								class="aspect-[1.4] h-full w-full object-cover transition-opacity duration-300"
-								in:fade
-							/>
-						</button>
-					{/each}
+				<div class="relative mt-4">
+					<div
+						class="thumbs-container scrollbar-hide relative flex snap-x snap-mandatory overflow-x-auto"
+						style="scroll-behavior: smooth;"
+					>
+						<div class="flex">
+							{#each images as image, index}
+								<button
+									onclick={() => goToImage(index)}
+									disabled={isAnimating}
+									class="mr-2 flex-shrink-0 snap-center transition-all duration-300 {currentImageIndex ===
+									index
+										? 'scale-105 ring-2 ring-amber-500'
+										: 'opacity-70 hover:opacity-100'} {isAnimating ? 'pointer-events-none' : ''}"
+									style="width: 100px;"
+								>
+									<img
+										src="{image}?key=small-image"
+										alt="Görsel {index + 1}"
+										class="h-[60px] w-[100px] rounded-lg object-cover transition-all duration-300 sm:h-[80px]"
+										loading="lazy"
+										decoding="async"
+									/>
+								</button>
+							{/each}
+						</div>
+					</div>
 				</div>
 			{/if}
 		</div>
@@ -193,7 +247,7 @@
 				{#if data.property.properties && data.property.properties.length > 0}
 					<div class="mt-8 flex flex-col gap-2">
 						<h2 class="mb-1 text-2xl font-semibold text-gray-900">Özellikler</h2>
-						{#each Object.entries(Object.groupBy(data.property.properties, (data) => data.property_type)) as [propertyTitle, propertyTexts]}
+						{#each Object.entries(groupedProperties) as [propertyTitle, propertyTexts]}
 							{#if propertyTexts?.length > 1}
 								<h3 class="mt-1 text-lg font-semibold text-gray-900">{propertyTitle}</h3>
 								{#each propertyTexts as propertyText}
@@ -245,3 +299,14 @@
 		</div>
 	</div>
 </main>
+
+<style>
+	/* Scrollbar'ı gizle ama işlevselliğini koru */
+	.scrollbar-hide {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none; /* Chrome, Safari and Opera */
+	}
+</style>

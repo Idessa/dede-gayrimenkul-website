@@ -11,13 +11,24 @@ export interface Property {
 	title: string;
 	price: number;
 	description: string;
-	image: {
+	main_image: string;
+	images: {
 		directus_files_id: string;
+	}[];
+	properties: {
+		property: string;
+		property_type: string;
 	}[];
 	bedroom: number;
 	bath: number;
 	area: number;
 	features: string[];
+	city: string;
+	district: string;
+	neighborhood: string;
+	location: {
+		coordinates: [number, number];
+	};
 }
 
 export interface Service {
