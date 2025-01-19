@@ -99,7 +99,7 @@
 		{/each}
 	</div>
 
-	<div class="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-2 md:bottom-24">
+	<div class="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-2">
 		{#each properties as _, i}
 			<button
 				onclick={() => {
