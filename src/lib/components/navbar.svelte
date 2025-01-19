@@ -3,13 +3,16 @@
 	import { watch } from 'runed';
 	import { mode, setMode } from 'mode-watcher';
 	import 'iconify-icon';
+	import { onMount } from 'svelte';
 
 	let isMobileMenuOpen = $state(false);
+	let navbar: HTMLElement;
 
 	const toggleMobileMenu = () => {
 		isMobileMenuOpen = !isMobileMenuOpen;
 	};
 
+	// Sayfa değiştiğinde menüyü kapat
 	watch(
 		() => page.url.pathname,
 		() => {
@@ -17,12 +20,43 @@
 		}
 	);
 
+	// Scroll olduğunda menüyü kapat
+	let lastScrollY = 0;
+	function handleScroll() {
+		const currentScrollY = window.scrollY;
+		if (Math.abs(currentScrollY - lastScrollY) > 10) {
+			isMobileMenuOpen = false;
+		}
+		lastScrollY = currentScrollY;
+	}
+
+	// Dışarı tıklandığında menüyü kapat
+	function handleClickOutside(event: MouseEvent) {
+		const target = event.target as HTMLElement;
+		if (isMobileMenuOpen && navbar && !navbar.contains(target)) {
+			isMobileMenuOpen = false;
+		}
+	}
+
+	onMount(() => {
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		document.addEventListener('click', handleClickOutside);
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+			document.removeEventListener('click', handleClickOutside);
+		};
+	});
+
 	function toggleDarkMode() {
 		setMode($mode === 'dark' ? 'light' : 'dark');
 	}
 </script>
 
-<nav class="fixed left-0 right-0 top-0 z-50 bg-amber-50 shadow-lg dark:bg-gray-800">
+<nav
+	bind:this={navbar}
+	class="fixed left-0 right-0 top-0 z-50 bg-amber-50 shadow-lg dark:bg-gray-800"
+>
 	<div class="mx-auto max-w-7xl px-4">
 		<div class="flex h-16 justify-between">
 			<!-- Logo -->
