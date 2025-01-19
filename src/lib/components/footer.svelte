@@ -9,7 +9,7 @@
 			<div class=" space-y-4">
 				<img src="/DedeEmlakLogo.svg" alt="Dede Gayrimenkul" class="size-28" />
 				<p class="text-gray-400">
-					20 yılı aşkın süredir gayrimenkul sektöründe güvenilir hizmet sunuyoruz.
+					32 yılı aşkın süredir gayrimenkul sektöründe güvenilir hizmet sunuyoruz.
 				</p>
 			</div>
 
