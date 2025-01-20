@@ -3,16 +3,12 @@ import type { PageServerLoad } from './$types';
 import { getDirectusInstance } from '$lib/directus';
 import { readItems } from '@directus/sdk';
 
-interface DirectusError {
-	status?: number;
-	message?: string;
-}
-
 export const load = (async ({ params, fetch }) => {
 	try {
 		const directus = getDirectusInstance(fetch);
 
-		const properties = await directus.request(
+		// Önce normal ilanları kontrol et
+		const regularProperties = await directus.request(
 			readItems('real_estate', {
 				filter: {
 					slug: {
@@ -23,18 +19,47 @@ export const load = (async ({ params, fetch }) => {
 			})
 		);
 
-		if (!properties?.length) {
+		// Eğer normal ilanlarda bulunduysa onu döndür
+		if (regularProperties?.length) {
+			return { property: regularProperties[0] };
+		}
+
+		// Normal ilanlarda bulunamadıysa sahibinden.com ilanlarını kontrol et
+		const sahibindenProperties = await directus.request(
+			readItems('acil_arazi_lands', {
+				filter: {
+					slug: {
+						_eq: params.slug
+					},
+					sahibinden_id: {
+						_nnull: true
+					},
+					archive: {
+						_eq: false
+					}
+				},
+				fields: ['*']
+			})
+		);
+
+		if (!sahibindenProperties?.length) {
 			return error(404, 'Gayrimenkul bulunamadı');
 		}
 
-		const rawProperty = properties[0];
+		// Sahibinden.com ilanını uygun formata dönüştür
+		const property = {
+			...sahibindenProperties[0],
+			images: sahibindenProperties[0].image ? [sahibindenProperties[0].image] : [],
+			status: 'Satılık',
+			source: 'sahibinden'
+		};
 
-		return { property: rawProperty };
+		return { property };
 	} catch (err) {
 		console.error('Gayrimenkul detayları yüklenirken hata oluştu:', err);
 
 		if (err && typeof err === 'object' && 'status' in err) {
-			const directusError = err as DirectusError;
+			const directusError = err as { status?: number; message?: string };
 			if (directusError.status === 404) {
 				return error(404, 'Gayrimenkul bulunamadı');
 			}

@@ -2,6 +2,10 @@
 	import type { Property } from '$lib/types';
 
 	let { properties } = $props<{ properties: Property[] }>();
+
+	// Carousel için maksimum 15 mülk göster
+	const carouselProperties = $derived(properties.slice(0, 15));
+
 	let currentIndex = $state(0);
 	let touchStartX = $state(0);
 	let touchEndX = $state(0);
@@ -13,12 +17,12 @@
 	};
 
 	const nextSlide = () => {
-		currentIndex = (currentIndex + 1) % properties.length;
+		currentIndex = (currentIndex + 1) % carouselProperties.length;
 		resetInterval();
 	};
 
 	const prevSlide = () => {
-		currentIndex = (currentIndex - 1 + properties.length) % properties.length;
+		currentIndex = (currentIndex - 1 + carouselProperties.length) % carouselProperties.length;
 		resetInterval();
 	};
 
@@ -57,8 +61,6 @@
 			currentIndex === index ? 'bg-white' : 'bg-white/50'
 		}`;
 	};
-
-	console.log(properties);
 </script>
 
 <div
@@ -74,7 +76,7 @@
 		style="transform: translateX(-{currentIndex * 100}%)"
 		role="list"
 	>
-		{#each properties as property, i}
+		{#each carouselProperties as property, i}
 			<div class="relative h-full min-w-full" role="listitem" aria-current={currentIndex === i}>
 				<img
 					src="https://energydnd.idesamedya.com/assets/{property.main_image}"
@@ -100,7 +102,7 @@
 	</div>
 
 	<div class="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-2">
-		{#each properties as _, i}
+		{#each carouselProperties as _, i}
 			<button
 				onclick={() => {
 					currentIndex = i;

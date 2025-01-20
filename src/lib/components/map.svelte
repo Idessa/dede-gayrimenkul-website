@@ -10,13 +10,13 @@
 		lands: any;
 	} = $props();
 
-	let markers: { lngLat: ml.LngLat; land }[] = $state([]);
+	let markers: { lngLat: ml.LngLat; land: any }[] = $state([]);
 
 	watch(
 		() => lands,
 		() => {
 			markers = [];
-			lands.forEach((land) => {
+			lands.forEach((land: any) => {
 				markers.push({
 					lngLat: new ml.LngLat(land.location.coordinates[0], land.location.coordinates[1]),
 					land
@@ -29,7 +29,7 @@
 {#if markers.length > 0}
 	<MapLibre
 		center={markers[0].lngLat}
-		zoom={16}
+		zoom={13}
 		class="size-full"
 		standardControls
 		{locale}
